@@ -1,7 +1,7 @@
 const targetDate = new Date("Aug 29, 2021 07:00:40").getTime();
 const CountdownTimer = setInterval(function () {
-  let now = new Date().getTime();
-  let time = targetDate - now;
+  let date = new Date().getTime();
+  let time = targetDate - date;
 
   if (time >= 0) {
     let days = Math.floor(time / (1000 * 60 * 60 * 24));
