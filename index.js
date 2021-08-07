@@ -1,7 +1,7 @@
 class CountdownTimer {
   constructor({ selector, targetDate }) {
-    this.timerEl = document.querySelector(selector);
     this.targetDate = targetDate;
+    this.timerEl = document.querySelector(selector);
     this.sec = this.timerEl.childNodes[7].childNodes[1];
     this.min = this.timerEl.childNodes[5].childNodes[1];
     this.hours = this.timerEl.childNodes[3].childNodes[1];
