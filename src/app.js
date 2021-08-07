@@ -1,20 +1,21 @@
 class CountdownTimer {
   constructor({ selector, targetDate }) {
-    this.timerId = null;
     this.selector = selector;
     this.targetDate = targetDate;
-    this.startBtn = document.querySelector("#start");
-    this.stopBtn = document.querySelector("#stop");
     this.sec = document.querySelector('.value[data-value="secs"]');
     this.min = document.querySelector('.value[data-value="mins"]');
     this.hours = document.querySelector('.value[data-value="hours"]');
     this.days = document.querySelector('.value[data-value="days"]');
-    this.timer = document.querySelector("#timer-1");
+    this.timer = document.getElementById("timer-1");
   }
-
-  action() {
+  start = setInterval(() => {
     const currentTime = Date.now();
     const time = this.targetDate - currentTime;
+    this.action(time);
+    this.stop(time);
+  }, 1000);
+
+  action(time) {
     const sec = Math.floor((time % (1000 * 60)) / 1000);
     const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
     const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -26,26 +27,17 @@ class CountdownTimer {
     this.days.textContent = days < 10 ? `0${days}` : days;
   }
 
-  stop() {
-    if (this.targetDate - Date.now() < 0) {
+  stop(time) {
+    if (time <= 0) {
       clearInterval(this.start);
     }
   }
-  start = setInterval(() => {
-    this.action();
-    this.stop();
-  }, 1000);
 }
 
-const timer = new CountdownTimer({
+new CountdownTimer({
   selector: "#timer-1",
   targetDate: new Date("Aug 10, 2021 13:10:40"),
 });
-// const timer2 = new CountdownTimer({
-//   selector: "#timer-2",
-//   targetDate: new Date("Aug 07, 2021 13:09:40"),
-// });
-timer.action();
 
 // ================ Простой метод
 // const refs = {
