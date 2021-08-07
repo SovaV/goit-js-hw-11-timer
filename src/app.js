@@ -26,16 +26,15 @@ class CountdownTimer {
     this.days.textContent = days < 10 ? `0${days}` : days;
   }
 
+  stop() {
+    if (this.targetDate - Date.now() < 0) {
+      clearInterval(this.start);
+    }
+  }
   start = setInterval(() => {
     this.action();
     this.stop();
   }, 1000);
-
-  stop() {
-    if (this.targetDate - Date.now() < 0) {
-      this.timer.textContent = "Ба-Бах!";
-    }
-  }
 }
 
 const timer = new CountdownTimer({
@@ -44,7 +43,7 @@ const timer = new CountdownTimer({
 });
 // const timer2 = new CountdownTimer({
 //   selector: "#timer-2",
-//   targetDate: new Date("Aug 09, 2021 13:09:40"),
+//   targetDate: new Date("Aug 07, 2021 13:09:40"),
 // });
 timer.action();
 
