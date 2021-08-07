@@ -1,22 +1,20 @@
 class CountdownTimer {
-  constructor({ date }) {
+  constructor({ selector, targetDate }) {
     this.timerId = null;
-    this.date = date;
+    this.selector = selector;
+    this.targetDate = targetDate;
     this.startBtn = document.querySelector("#start");
     this.stopBtn = document.querySelector("#stop");
     this.sec = document.querySelector('.value[data-value="secs"]');
     this.min = document.querySelector('.value[data-value="mins"]');
     this.hours = document.querySelector('.value[data-value="hours"]');
     this.days = document.querySelector('.value[data-value="days"]');
-
-    this.action = this.action.bind(this);
-    this.start = this.start.bind(this);
-    this.stop = this.stop.bind(this);
+    this.timer = document.querySelector("#timer-1");
   }
 
   action() {
     const currentTime = Date.now();
-    const time = this.date - currentTime;
+    const time = this.targetDate - currentTime;
     const sec = Math.floor((time % (1000 * 60)) / 1000);
     const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
     const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -28,24 +26,27 @@ class CountdownTimer {
     this.days.textContent = days < 10 ? `0${days}` : days;
   }
 
-  start() {
-    this.timerId = setInterval(this.action, 1000);
-  }
+  start = setInterval(() => {
+    this.action();
+    this.stop();
+  }, 1000);
 
   stop() {
-    clearInterval(this.timerId);
-  }
-
-  init() {
-    this.startBtn.addEventListener("click", this.start);
-    this.stopBtn.addEventListener("click", this.stop);
+    if (this.targetDate - Date.now() < 0) {
+      this.timer.textContent = "Ба-Бах!";
+    }
   }
 }
 
 const timer = new CountdownTimer({
-  date: new Date("Aug 29, 2021 07:00:40"),
+  selector: "#timer-1",
+  targetDate: new Date("Aug 07, 2021 13:10:40"),
 });
-timer.init();
+// const timer2 = new CountdownTimer({
+//   selector: "#timer-2",
+//   targetDate: new Date("Aug 07, 2021 13:09:40"),
+// });
+timer.action();
 
 // ================ Простой метод
 // const refs = {
