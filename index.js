@@ -48,3 +48,8 @@ const timer = new CountdownTimer({
   targetDate: new Date("Aug 12, 2021 13:10:40"),
 });
 timer.init();
+const timer2 = new CountdownTimer({
+  selector: "#timer-2",
+  targetDate: new Date("Aug 15, 2021 02:10:40"),
+});
+timer2.init();
