@@ -3,7 +3,7 @@ body {
   padding: 0;
 }
 .timer {
-  background: rgb(184, 174, 166);
+  background: rgb(236, 208, 185);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -22,4 +22,14 @@ body {
 }
 .label {
   font-size: 14px;
+}
+
+button {
+  align-items: center;
+}
+.start-btn {
+  background-color: green;
+}
+.stop-btn {
+  background-color: red;
 }

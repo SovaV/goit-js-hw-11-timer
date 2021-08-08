@@ -8,9 +8,8 @@ class CountdownTimer {
     this.min = this.timerContainer.children[2].children[0];
     this.hours = this.timerContainer.children[1].children[0];
     this.days = this.timerContainer.children[0].children[0];
-    this.startBtn =
-      this.timerContainer.previousElementSibling.previousElementSibling;
-    this.stopBtn = this.timerContainer.previousElementSibling;
+    this.startBtn = this.timerContainer.children[4].children[0];
+    this.stopBtn = this.timerContainer.children[4].children[1];
 
     this.action = this.action.bind(this);
     this.start = this.start.bind(this);
