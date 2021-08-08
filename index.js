@@ -4,10 +4,10 @@ class CountdownTimer {
     this.targetDate = targetDate;
     this.selector = selector;
     this.timerContainer = document.querySelector(selector);
-    this.sec = this.timerContainer.children[3].children[0];
-    this.min = this.timerContainer.children[2].children[0];
-    this.hours = this.timerContainer.children[1].children[0];
     this.days = this.timerContainer.children[0].children[0];
+    this.hours = this.timerContainer.children[1].children[0];
+    this.min = this.timerContainer.children[2].children[0];
+    this.sec = this.timerContainer.children[3].children[0];
     this.startBtn = this.timerContainer.children[4].children[0];
     this.stopBtn = this.timerContainer.children[4].children[1];
 
